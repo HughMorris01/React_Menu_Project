@@ -15,13 +15,10 @@ const App = () => {
   const categoryArray = [...categories];
 
   const filterItems = (category) => {
-    console.log(category);
-    console.log(data);
-    data.forEach((item) => {
-      console.log(item.category);
-    });
+    if (category === 'all') {
+      return setMenuItems(data);
+    }
     const filteredItems = data.filter((item) => item.category === category);
-    console.log(filteredItems);
     setMenuItems(filteredItems);
   };
 
@@ -29,7 +26,7 @@ const App = () => {
     <main>
       <section className="menu">
         <Title text="Big eats" />
-        <Categories categoryArray={categoryArray} filterItems={filterItems} />
+        <Categories categories={categoryArray} filterItems={filterItems} />
         <Menu menuItems={menuItems} />
       </section>
     </main>
